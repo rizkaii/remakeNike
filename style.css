@@ -8,6 +8,7 @@
 body {
   font-family: Arial, sans-serif;
   scroll-behavior: smooth;
+  background-color: #ffffff;
 }
 .section {
   width: 100%; /* Mengatur lebar menjadi 100% */
@@ -15,7 +16,7 @@ body {
   opacity: 0; /* Mulai dengan opacity 0 (tersembunyi) */
   transform: translateY(50px); /* Geser ke bawah */
   transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Transisi untuk animasi */
-  background-color: #f0f0f0;
+  background-color: #ffffff;
   
 }
 
@@ -517,6 +518,16 @@ h2 {
   max-width: 800px; /* Lebar maksimal paragraf */
   margin: 0 auto; /* Pusatkan paragraf */
   text-align: justify;
+}
+.futureDesc{
+  width: 100%;
+  opacity: 0; /* Mulai dengan opacity 0 (tersembunyi) */
+  transform: translateY(50px); /* Geser ke bawah */
+  transition: opacity 2s ease-out, transform 0.6s ease-out; /* Transisi untuk animasi */
+}
+.futureDesc.visible{
+  opacity: 1; /* Tampilkan elemen */
+  transform: translateY(0); /* Kembali ke posisi semula */
 }
 @media(max-width:800px){
   .future-section p {
