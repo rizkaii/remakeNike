@@ -523,7 +523,7 @@ h2 {
   width: 100%;
   opacity: 0; /* Mulai dengan opacity 0 (tersembunyi) */
   transform: translateY(50px); /* Geser ke bawah */
-  transition: opacity 2s ease-out, transform 0.6s ease-out; /* Transisi untuk animasi */
+  transition: opacity 1s ease-out, transform 0.6s ease-out; /* Transisi untuk animasi */
 }
 .futureDesc.visible{
   opacity: 1; /* Tampilkan elemen */
