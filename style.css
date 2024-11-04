@@ -303,7 +303,125 @@ h1 {
   border-radius: 10px;
   margin-left: 12%;
 }
+.figure{
+  margin: 0 auto;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+}
+.figure img{
+  width: 80%;
+  align-items: center;
+  float: left;
+  transition: filter 0.8s ease, transform 0.3s ease;
+  filter: grayscale(100%);
+}
+.title-figure{
+  opacity: 0; /* Mulai dengan opacity 0 (tersembunyi) */
+  transform: translateY(50px); /* Geser ke bawah */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Transisi untuk animasi */
+  z-index: -1;
+  font-size: 8.5vw;
+  z-index: -1;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+.title-figure.visible{
+  opacity: 1;
+  transform: translateY(0);
+  font-size: 8.5vw;
+  z-index: -1;
 
+  
+}
+.figure img:hover{
+  filter: grayscale(0%);
+  transform: scale(1.05);
+  transform: rotate(1deg)
+}
+
+.text-figure{
+  width: 100%;
+  position: absolute;
+  margin-bottom: 20%; 
+}
+.text-two{
+  position: absolute;
+  width: 30%;
+  margin-left: 52%;
+  transition: 0.4s;
+  opacity: 0; /* Mulai dengan opacity 0 (tersembunyi) */
+  transform: translateX(100px); /* Geser ke bawah */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Transisi untuk animasi */
+}
+.text-two.visible {
+opacity: 1; /* Tampilkan elemen */
+transform: translateX(0); /* Kembali ke posisi semula */
+}
+.text-under-title{
+  opacity: 0; /* Mulai dengan opacity 0 (tersembunyi) */
+  transform: translateX(-100px); /* Geser ke bawah */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Transisi untuk animasi */
+}
+.text-under-title.visible {
+opacity: 1; /* Tampilkan elemen */
+transform: translateX(0); /* Kembali ke posisi semula */
+}
+
+.text-two:hover h1{
+  color: rgb(237, 117, 13);
+  transition: 0.4s;
+}
+.text-two h1{
+  color: #000;
+  font-size: 4.5vw;
+  margin-bottom: -4%;
+}
+.text-two h2{
+  margin-bottom: 0%;
+  color: #3a3a3a;
+  font-size: 2.8vw;
+}
+.text-two p{
+  text-align: justify;
+  font-size: 14px;
+}
+
+.text-figure h1{
+  font-size: 8.5vw;
+  margin-top: -13%;
+  margin-left: 10%;
+  z-index: -1;
+  position: absolute;
+  text-align: center;
+}
+.text-figure h1 span{
+  color: #434343;
+  font-weight: bold;
+}
+
+.text-figure p{
+  font-size: 14px;
+  line-height: 1.6;
+  text-align: justify;
+  width: 26%;
+  position: absolute;
+  margin-left: 10%;
+}
+@media (max-width:800px){
+  .figure{
+    display: none;
+  }
+}
+.image-pict{
+  width: 100%;
+}
+.image-pict img{
+  width: 40%;
+}
 .products {
   display: flex;
   flex-direction: column;
@@ -329,7 +447,7 @@ h1 {
 }
 
 .product img {
-  width: 100%;
+  width: 70%;
   max-width: 320px;
   margin: 0 auto;
   display: block;
