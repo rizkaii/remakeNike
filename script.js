@@ -13,7 +13,7 @@ window.addEventListener("scroll", () => {
 });
 
 document.addEventListener('scroll', function() {
-  const sections = document.querySelectorAll('.section, .stat, .product, .futureDesc, .title-figure, .text-two, .text-under-title');
+  const sections = document.querySelectorAll('.section, .stat, .product, .futureDesc, .title-figure, .text-two, .text-under-title, .about-img');
   const screenPosition = window.innerHeight / 1.2;
 
   sections.forEach(section => {
@@ -77,4 +77,34 @@ function nextTestimonial() {
 }
 
 
+function animateCount(element) {
+  let percentage = 0;
+  const target = parseInt(element.getAttribute("data-target")); // Mengambil nilai target dari data-target
 
+  const interval = setInterval(() => {
+      percentage++;
+      element.textContent = `${percentage}%`;
+
+      if (percentage >= target) { // Menghentikan animasi saat mencapai target
+          clearInterval(interval);
+      }
+  }, 30); // Sesuaikan kecepatan animasi dengan mengubah waktu interval
+}
+
+// Memilih semua elemen persentase
+const percentageElements = document.querySelectorAll("#percentage1, #percentage2, #percentage3");
+
+// Menggunakan Intersection Observer
+const observer = new IntersectionObserver((entries, observer) => {
+  entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+          animateCount(entry.target);
+          observer.unobserve(entry.target); // Berhenti memantau setelah animasi dimulai
+      }
+  });
+}, { threshold: 0.5 }); // Mulai animasi ketika 50% elemen terlihat di layar
+
+// Memantau setiap elemen persentase
+percentageElements.forEach((element) => {
+  observer.observe(element);
+});
