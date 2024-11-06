@@ -13,7 +13,7 @@ window.addEventListener("scroll", () => {
 });
 
 document.addEventListener('scroll', function() {
-  const sections = document.querySelectorAll('.section, .stat, .product, .futureDesc, .title-figure, .text-two, .text-under-title, .about-img, .testimonial-box1, .testimonial-box2, .testimonial-box3');
+  const sections = document.querySelectorAll('.section, .stat, .product, .futureDesc, .title-figure, .text-two, .text-under-title, .testimonial-box1, .testimonial-box2, .testimonial-box3, .name1, .name2, .name3, .image-philip');
   const screenPosition = window.innerHeight / 1.2;
 
   sections.forEach(section => {
