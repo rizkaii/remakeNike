@@ -34,17 +34,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Arahkan berdasarkan role
             if ($role === 'admin') {
-                header('Location: dashboard.php'); // Arahkan ke halaman admin
+                header('Location: ../product/index.php'); // Arahkan ke halaman admin
             } else {
-                header('Location: beranda.php'); // Arahkan ke halaman user biasa
+                header('Location: ../home/index.php'); // Arahkan ke halaman user biasa
             }
             exit;
         } else {
-            echo "Password salah!";
+            echo "<script>
+                alert('Password salah!');
+                window.location.href = 'index.php';
+            </script>";
         }
+        
     } else {
-        echo "Pengguna tidak ditemukan!";
+        echo "<script>
+            alert('Username salah!');
+            window.location.href = 'index.php';
+        </script>";
     }
+    
 
     mysqli_stmt_close($stmt);
 }

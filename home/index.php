@@ -1,28 +1,50 @@
+<?php
+// Koneksi database
+include '../product/db.php';
+
+// Query untuk mengambil satu produk random
+$sql = "SELECT * FROM product ORDER BY RAND() LIMIT 4";
+$result = $conn->query($sql);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nike by Rizal Lazuardi</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/x-icon" href="img/shoes1.png">
+  <?php
+        // Ambil timestamp file CSS agar selalu ter-refresh
+        $css_version = filemtime('style.css'); 
+    ?>
+    <link rel="stylesheet" href="style.css?v=<?php echo $css_version; ?>">
+    
+  <link rel="icon" type="image/x-icon" href="../img/shoes1.png">
 </head>
 <body>
 
 <!-- Navbar -->
 
 <nav id="navbar">
-  <div class="menu-toggle" id="mobile-menu">
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
-  </div>
-  <img src="img/logo.png" alt="" loading="lazy" class="logo">
+      <div class="menu-toggle" id="mobile-menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+      </div>
+  <img src="../img/logo.png" alt="" loading="lazy" class="logo">
+  <a href="">
+  <img src="../img/user.png" alt="" loading="lazy" class="userlogo">
+  </a>
+  <a href="">
+  <img src="../img/bell.png" alt="" loading="lazy" class="bell">
+  </a>
+  <a href="../galery/index.php">
+  <img src="../img/bag.png" alt="" loading="lazy" class="market">
+  </a>
   <ul class="nav-links">
-      <li><a href="#about-section-head">About Me</a></li>
-      <li><a href="#our-products">Our Products</a></li>
+      <li><a href="#about-section-head">About</a></li>
+      <li><a href="#our-products">Marketplace</a></li>
       <li><a href="#rate">Rate</a></li>
-      <li><a href="#more-future">More Future</a></li>
+      <li><a href="#more-future">Future</a></li>
   </ul>
 </nav>
 
@@ -30,7 +52,7 @@
 <header>
     <div class="box-head">
         <div class="shoes-header">
-            <img src="img/sample.jpg" alt="" loading="lazy">
+            <img src="../img/sample.jpg" alt="" loading="lazy">
         </div>
     </div>
 </header>
@@ -62,15 +84,15 @@
         
         <div class="stats">
           <div class="stat">
-            <h2 id="percentage1" data-target="42">0%</h2>
+            <h2 id="#percentage1" data-target="42">0%</h2>
             <p>of NIKE’s leadership positions are held by women.</p>
           </div>
           <div class="stat">
-            <h2 id="percentage2" data-target="74">0%</h2>
+            <h2 id="#percentage2" data-target="74">0%</h2>
             <p>renewable energy in owned or operated facilities, up from 48% in FY20.</p>
           </div>
           <div class="stat">
-            <h2 id="percentage3" data-target="97.7">0</h2>
+            <h2 id="#percentage3" data-target="97.7">0</h2>
             <p>invested in NIKE, Inc.'s fiscal year 2021 to drive positive impact in communities around the world.</p>
           </div>
         </div>
@@ -78,7 +100,7 @@
       
 </section>
 <div class="figure">
-  <img src="img/nike.png" alt="" loading="lazy">
+  <img src="../img/nike.png" alt="" loading="lazy">
   <div class="text-figure">
     <div class="title-figure">
       <h1>NIKE FOR <span>SPORT</span></h1>
@@ -104,28 +126,58 @@
 </div>
 
 <section id="our-products" class="section">
-  <div class="container">
-    <h1>OUR <span class="highlight">PRODUCT</span></h1>
-    <div class="product-info">
-        <p>Most Nike shoes use a mix of leather, fabric, foam, and rubber. The Nike classics and deluxe model basketball shoes will have real leather parts. Nike running shoes and modern performance baseball shoes are generally made with lightweight fabric uppers in place of heavier leather.</p>
-        <img src="img/sample.jpg" alt="Nike Shoe" loading="lazy">
-    </div>
-    <div class="products">
-        <div class="product">
-            <img src="img/marine.png" alt="Air Max 270 Ultra Marine" loading="lazy">
-            <h2>$150.00</h2>
-            <h3>Air Max 270 <span class="highlight">Ultra Marine</span></h3>
-            <p>The Air Max 270 boasts Nike’s biggest heel bag yet, delivering a super-soft ride that brings you even closer to the feeling of walking on air.</p>
+    <div class="container">
+        <h1>OUR <span class="highlight">PRODUCT</span></h1>
+        <div class="product-info">
+            <p>Most Nike shoes use a mix of leather, fabric, foam, and rubber. The Nike classics and deluxe model basketball shoes will have real leather parts. Nike running shoes and modern performance baseball shoes are generally made with lightweight fabric uppers in place of heavier leather.</p>
+            <img src="../img/sample.jpg" alt="Nike Shoe" loading="lazy">
         </div>
-        <div class="product">
-            <img src="img/orange.png" alt="Air Max 270 total Orange" loading="lazy">
-            <h2>$150.00</h2>
-            <h3>Air Max 270 <span class="highlight">total Orange</span></h3>
-            <p>The Air Max 270 boasts Nike’s biggest heel bag yet, delivering a super-soft ride that brings you even closer to the feeling of walking on air.</p>
+        <div class="products">
+          <?php 
+              if ($result->num_rows > 0): 
+              while ($row = mysqli_fetch_assoc($result)): ?>
+                  <div class="product">
+                      <div class="catalog-card">
+                          <!-- Gambar Produk -->
+                          <div class="image-container">
+                              <img src="../product/<?php echo $row['image_path']; ?>" alt="<?php echo $row['name']; ?>">
+                          </div>
+                          <!-- Informasi Produk -->
+                          <div class="product-info">
+                              <h2>$<?php echo $row['price']; ?></h2>
+                          </div>
+                          <p class="product-title"><?php echo $row['name']; ?></p>
+                          <!-- Tombol SHOP NOW -->
+                          <div class="shop-now">
+                              <button>
+                                  <img src="../img/cart.png" alt="Cart Icon" class="cart-icon">
+                                  SHOP NOW
+                              </button>
+                          </div>
+                      </div>
+                  </div>
+              <?php endwhile; 
+          else: ?>
+              <p>Tidak ada produk yang ditemukan.</p>
+          <?php 
+          endif; 
+
+          $conn->close();
+          ?>
+                
+                
+                
+                
+                
+                
+        </div>
+        <div style="text-align: center; margin-top: 50px;">
+            <!-- Tombol Shop Now -->
+            <a href="#" class="shop-now-btn">
+                <span>SHOP NOW</span>
+            </a>
         </div>
     </div>
-    <a href="galery/index.html"><button class="see-more">SEE MORE</button></a>
-</div>
 </section>
 
 
@@ -168,20 +220,20 @@
 
 <div class="contact-container">
   <h2>Contact me</h2>
-  <form id="contact-form">
-      <div class="form-group">
-          <label for="name">Name :</label>
-          <input type="text" id="name" placeholder="name...." required>
-      </div>
-      <div class="form-group">
-          <label for="email">Email:</label>
-          <input type="email" id="email" placeholder="email...." required>
-      </div>
-      <div class="form-group">
-          <label for="message">Message:</label>
-          <textarea id="message" rows="5" placeholder="message...." required></textarea>
-      </div>
-      <button type="submit" class="submit-button">Send</button>
+  <form id="contact-form" action="send.php" method="post">
+    <div class="form-group">
+        <label for="name">Name :</label>
+        <input type="text" id="name" name="name" placeholder="name...." required>
+    </div>
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="email...." required>
+    </div>
+    <div class="form-group">
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" placeholder="message...." required></textarea>
+    </div>
+    <button type="submit" class="submit-button">Send</button>
   </form>
 </div>
 
@@ -258,6 +310,7 @@
       <a href="#">CA Supply Chains Act</a>
   </div>
 </footer>
-<script src="script.js"></script>
+<script src="script.js?v=<?php echo time(); ?>"></script>
+
 </body>
 </html>

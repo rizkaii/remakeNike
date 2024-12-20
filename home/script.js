@@ -45,6 +45,7 @@ document.querySelectorAll('nav ul li a').forEach(anchor => {
   });
 });
 
+// Toggle menu
 document.getElementById('mobile-menu').addEventListener('click', function() {
   const navLinks = document.querySelector('.nav-links');
   const toggle = document.getElementById('mobile-menu');
@@ -63,6 +64,7 @@ document.querySelectorAll('.nav-links a').forEach(link => {
       toggle.classList.remove('active');
   });
 });
+
 
 
 let currentIndex = 0;
