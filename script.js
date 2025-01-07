@@ -45,6 +45,7 @@ document.querySelectorAll('nav ul li a').forEach(anchor => {
   });
 });
 
+// Toggle menu
 document.getElementById('mobile-menu').addEventListener('click', function() {
   const navLinks = document.querySelector('.nav-links');
   const toggle = document.getElementById('mobile-menu');
@@ -63,6 +64,7 @@ document.querySelectorAll('.nav-links a').forEach(link => {
       toggle.classList.remove('active');
   });
 });
+
 
 
 let currentIndex = 0;
@@ -107,4 +109,50 @@ const observer = new IntersectionObserver((entries, observer) => {
 // Memantau setiap elemen persentase
 percentageElements.forEach((element) => {
   observer.observe(element);
+});
+
+
+
+
+
+let currentSlideIndex = 0;
+let direction = 1; // 1 for forward, -1 for backward
+
+function moveSlide(direction) {
+    const slides = document.querySelectorAll('.carousel-slide');
+    const totalSlides = slides.length;
+    
+    currentSlideIndex += direction;
+
+    if (currentSlideIndex >= totalSlides) {
+        currentSlideIndex = totalSlides - 1;
+        direction = -1;
+    } else if (currentSlideIndex < 0) {
+        currentSlideIndex = 0;
+        direction = 1;
+    }
+
+    const newTransformValue = -currentSlideIndex * 100;
+    document.querySelector('.carousel-container').style.transform = `translateX(${newTransformValue}%)`;
+}
+
+// Function to auto move slides every 2 seconds
+function autoSlide() {
+    setInterval(() => {
+        moveSlide(direction);
+        // Change direction if at the end or beginning
+        if (currentSlideIndex === document.querySelectorAll('.carousel-slide').length - 1) {
+            direction = -1;
+        } else if (currentSlideIndex === 0) {
+            direction = 1;
+        }
+    }, 2000);
+}
+
+// Initialize the auto slide function
+autoSlide();
+
+$("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
 });
