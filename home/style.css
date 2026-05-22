@@ -6,9 +6,10 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Jost', Arial, sans-serif;
   scroll-behavior: smooth;
-  background-color: #ffffff;
+  background-color: #fcfcfc;
+  color: #333;
 }
 .section {
   width: 100%; /* Mengatur lebar menjadi 100% */
@@ -31,10 +32,15 @@ nav {
   width: 100%;
   top: 0;
   left: 0;
-  background: linear-gradient(to right, #333, #444);
-  padding: 20px;
-  text-align: center;
+  background: rgba(15, 15, 15, 0.85); /* Dark transparent */
+  backdrop-filter: blur(10px); /* Glassmorphism */
+  -webkit-backdrop-filter: blur(10px);
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   z-index: 1000;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
   transition: all 0.5s ease;
 }
 
@@ -745,21 +751,22 @@ transform: translateX(0); /* Kembali ke posisi semula */
 
 /* Kartu Produk */
 .catalog-card {
-  width: 90%; /* Ukuran default responsif */
-  max-width: 250px; /* Maksimal lebar */
+  width: 90%;
+  max-width: 250px;
   background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05); /* Modern soft shadow */
+  border: 1px solid rgba(0,0,0,0.03);
   text-align: left;
   overflow: hidden;
-  margin: 10px; /* Memberikan jarak jika layar kecil */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animasi halus */
+  margin: 15px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 /* Efek Hover untuk Kartu */
 .catalog-card:hover {
-  transform: scale(1.05); /* Membesarkan kartu 5% */
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3); /* Shadow lebih tebal */
+  transform: translateY(-8px); /* Lift effect */
+  box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.1);
 }
 
 /* Gambar Produk */
@@ -805,26 +812,27 @@ transform: translateX(0); /* Kembali ke posisi semula */
 /* Tombol SHOP NOW */
 .shop-now button {
   width: 100%;
-  padding: 10px;
-  background-color: #000;
+  padding: 12px;
+  background: linear-gradient(135deg, #111, #333);
   color: #ffffff;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 600;
   border: none;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px; /* Jarak antara ikon dan teks */
+  gap: 8px;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 .cart-icon {
-  width: 20px;
-  height: 20px;
-  filter: brightness(0) invert(1); /* Mengubah gambar menjadi putih */
+  width: 18px;
+  height: 18px;
+  filter: brightness(0) invert(1);
 }
 .shop-now button:hover {
-  background-color: #ff6600;
-  transition: background-color 0.3s ease;
+  background: linear-gradient(135deg, #ff6600, #ff4500);
+  transform: scale(1.02);
 }
 
 /* RESPONSIVITAS UNTUK LAYAR KECIL */

@@ -24,6 +24,8 @@ if (!isset($_SESSION['username'])) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nike by Rizal Lazuardi</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <?php
         // Ambil timestamp file CSS agar selalu ter-refresh
         $css_version = filemtime('style.css'); 

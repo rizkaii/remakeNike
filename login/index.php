@@ -1,23 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - Sign up / Login Form</title>
+  <title>Login / Sign up</title>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
   <?php
-        // Ambil timestamp file CSS agar selalu ter-refresh
-        $css_version = filemtime('style.css'); 
-    ?>
-    <link rel="stylesheet" href="style.css?v=<?php echo $css_version; ?>">
-
-</head>
-<body>
-<!-- partial:index.partial.html -->
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Slide Navbar</title>
-	<link rel="stylesheet" type="text/css" href="slide navbar style.css">
-<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+      // Ambil timestamp file CSS agar selalu ter-refresh
+      $css_version = filemtime('style.css'); 
+  ?>
+  <link rel="stylesheet" href="style.css?v=<?php echo $css_version; ?>">
 </head>
 <body>
 	<div class="main">  	
@@ -36,15 +27,11 @@
 			<div class="login">
                 <form method="POST" action="login_process.php">
                     <label for="chk">Login</label>
-                    <input type="text" name="username" placeholder="username" required="">
+                    <input type="text" name="username" placeholder="Username" required="">
                     <input type="password" name="password" placeholder="Password" required="">
                     <button type="submit">Login</button>
                 </form>
 			</div>
 	</div>
-</body>
-</html>
-<!-- partial -->
-  
 </body>
 </html>
