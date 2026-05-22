@@ -2,17 +2,8 @@
 
 session_start(); // Memulai session
 
-$host = 'localhost';
-$dbname = 'db_nike'; // Ganti dengan nama database Anda
-$username = 'root'; // Ganti dengan username database Anda
-$password = ''; // Ganti dengan password database Anda
-
-// Membuat koneksi ke database
-$conn = mysqli_connect($host, $username, $password, $dbname);
-
-if (!$conn) {
-    die("Koneksi gagal: " . mysqli_connect_error());
-}
+// Konfigurasi database
+include '../config.php';
 
 // Proses Login
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -34,17 +25,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Arahkan berdasarkan role
             if ($role === 'admin') {
-                header('Location: dashboard.php'); // Arahkan ke halaman admin
+                header('Location: ../dashboard/dashboard.php'); // Arahkan ke halaman admin
             } else {
-                header('Location: beranda.php'); // Arahkan ke halaman user biasa
+                header('Location: ../home/index.php'); // Arahkan ke halaman user biasa
             }
             exit;
         } else {
-            echo "Password salah!";
+            echo "<script>
+                alert('Password salah!');
+                window.location.href = 'index.php';
+            </script>";
         }
+        
     } else {
-        echo "Pengguna tidak ditemukan!";
+        echo "<script>
+            alert('Username salah!');
+            window.location.href = 'index.php';
+        </script>";
     }
+    
 
     mysqli_stmt_close($stmt);
 }

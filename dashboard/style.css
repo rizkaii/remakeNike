@@ -1,0 +1,50 @@
+/* Custom Styles for Admin Dashboard */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.sidebar {
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.main-content {
+    margin-left: 250px;
+}
+
+.navbar {
+    margin-bottom: 20px;
+}
+
+.table th, .table td {
+    vertical-align: middle;
+}
+
+.table a {
+    text-decoration: none;
+}
+
+.table a.btn {
+    margin-right: 5px;
+}
+td img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+/* Styling for button on hover */
+.btn:hover {
+    opacity: 0.8;
+}
+
+/* Custom background for table rows on hover */
+.table tbody tr:hover {
+    background-color: #f1f1f1;
+}

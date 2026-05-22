@@ -45,6 +45,7 @@ document.querySelectorAll('nav ul li a').forEach(anchor => {
   });
 });
 
+// Toggle menu
 document.getElementById('mobile-menu').addEventListener('click', function() {
   const navLinks = document.querySelector('.nav-links');
   const toggle = document.getElementById('mobile-menu');
@@ -63,6 +64,7 @@ document.querySelectorAll('.nav-links a').forEach(link => {
       toggle.classList.remove('active');
   });
 });
+
 
 
 let currentIndex = 0;
@@ -107,4 +109,27 @@ const observer = new IntersectionObserver((entries, observer) => {
 // Memantau setiap elemen persentase
 percentageElements.forEach((element) => {
   observer.observe(element);
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const toggles = document.querySelectorAll(".footer-column h4");
+
+  toggles.forEach(toggle => {
+    toggle.addEventListener("click", () => {
+      const list = toggle.nextElementSibling;
+
+      // Toggle active state (only works in mobile view)
+      if (window.innerWidth < 768) {
+        toggle.classList.toggle("active");
+
+        // Adjust max-height for animation
+        if (list.style.maxHeight) {
+          list.style.maxHeight = null; // Collapse
+        } else {
+          list.style.maxHeight = list.scrollHeight + "px"; // Expand to fit content
+        }
+      }
+    });
+  });
 });

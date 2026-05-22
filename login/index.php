@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>CodePen - Sign up / Login Form</title>
-  <link rel="stylesheet" href="./style.css">
+  <?php
+        // Ambil timestamp file CSS agar selalu ter-refresh
+        $css_version = filemtime('style.css'); 
+    ?>
+    <link rel="stylesheet" href="style.css?v=<?php echo $css_version; ?>">
 
 </head>
 <body>
@@ -20,12 +24,12 @@
 		<input type="checkbox" id="chk" aria-hidden="true">
 
 			<div class="signup">
-				<form>
+				<form action="create_process.php" method="POST">
 					<label for="chk" aria-hidden="true">Sign up</label>
-					<input type="text" name="txt" placeholder="User name" required="">
-					<input type="email" name="email" placeholder="Email" required="">
-					<input type="password" name="pswd" placeholder="Password" required="">
-					<button>Sign up</button>
+					<input type="text" name="nama" placeholder="Name" required="">
+					<input type="text" name="username" placeholder="Username" required="">
+					<input type="password" name="password" placeholder="Password" required="">
+					<button type="submit">Sign up</button>
 				</form>
 			</div>
 

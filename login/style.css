@@ -6,7 +6,7 @@ body{
 	align-items: center;
 	min-height: 100vh;
 	font-family: 'Jost', sans-serif;
-	background: linear-gradient(to bottom, #0f0c29, #3a3a3b, #141418);
+	background: linear-gradient(to bottom, #000000, #3a3a3b, #141418);
 }
 .main{
 	width: 350px;
@@ -54,7 +54,7 @@ button{
 	justify-content: center;
 	display: block;
 	color: #fff;
-	background: #5c12e4;
+	background: #1246e4;
 	font-size: 1em;
 	font-weight: bold;
 	margin-top: 20px;
@@ -88,3 +88,4 @@ button:hover{
 #chk:checked ~ .signup label{
 	transform: scale(.6);
 }
+
